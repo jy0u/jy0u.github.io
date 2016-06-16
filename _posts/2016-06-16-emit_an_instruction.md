@@ -1,0 +1,9 @@
+---
+layout: post
+title: Emit An Instruction in LLVM
+---
+
+這[一篇文章](http://eli.thegreenplace.net/2012/11/24/life-of-an-instruction-in-llvm)解釋一個instruction是如何從LLVM IR轉變成machine code的。
+
+最讓人覺得有用的是作者不是是拿一個很簡單的範例，而是拿特殊限制的target instruction來解釋，這把instruciton selection需要做特殊處理和register allocation的部分也帶出。
+這讓我對LLVM鮮明的phase/pass設計中所保留的彈性又有不少的理解。

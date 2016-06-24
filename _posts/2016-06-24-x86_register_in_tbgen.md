@@ -10,9 +10,10 @@ It is CISC and some register design is similar to x86, so it is quite easy to ge
 Followings are what I got from X86RegisterInfo.td.  
 It is better that you read with Target.td with followings. 
 
-##### one 16bit regiser is from two 8bit register
+#### one 16bit regiser is from two 8bit register
 Some parts of code are not important for this, so they are removed.  
 Basic parts:
+
 ```
 class X86Reg<string n, bits<16> Enc, list<Register> subregs = []> : Register<n> {
   let Namespace = "X86";

@@ -33,8 +33,8 @@ def AH : X86Reg<"ah", 4>;
 ```
 
 Register AX is from AH and AL. The lower 8 bit from AL and higher 8 bit from AH.  
-SubRegIndices is the description list of register bits.  
-sub_8bit is the first element in the list and described the bit field which from AL.
+SubRegIndices is the description list of bit field of AX.  
+sub_8bit, AL are the first element in the corresponding list and described the bit field in AX.
 It is similar for the sub_8bit_hi and AH.
 Besides, the whole register bits are covered by the both 8 bit registers, so CoveredBySubRes is set to 1.
 

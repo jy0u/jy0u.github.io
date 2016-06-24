@@ -10,7 +10,7 @@ It is CISC and some register design is similar to x86, so it is quite easy to ge
 Followings are what I got from X86RegisterInfo.td.  
 It is better that you read with Target.td with followings. 
 
-#### one 16bit regiser is from two 8bit register
+### one 16bit regiser is from two 8bit register
 Some parts of code are not important for this, so they are removed.  
 Basic parts:
 
@@ -50,7 +50,7 @@ def EAX : X86Reg<"eax", 0, [AX]>, DwarfRegNum<[-2, 0, 0]>;
 }
 ```
 
-#### define top-level register classes 
+### define top-level register classes 
 All the 8 bit registers are listed as general 8bit register.  
 The order of elements in added register list is the register allocation order.  
 The AltOrders is a special allocation list and order for certain subtarget which has some limitation.  
@@ -68,7 +68,7 @@ def GR8 : RegisterClass<"X86", [i8],  8,
 }
 ```
 
-#### more constrains on register allocatoins
+### more constrains on register allocatoins
 It is possible that there are constrains on register allocations in certain instrction or situation.  
 The solution in x86 tbgen design is to set different top level register class for register allocation under the constrains.
 
@@ -83,7 +83,7 @@ def GR8_NOREX : RegisterClass<"X86", [i8], 8,
 }
 ```
 
-#### don't allocate special registers
+### don't allocate special registers
 Just set the CopyCost to -1 and isAllocatable to 0.  
 There are clear descriptions in Target.td. 
 

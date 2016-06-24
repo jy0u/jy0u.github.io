@@ -34,6 +34,7 @@ def AH : X86Reg<"ah", 4>;
 
 Register AX is from AH and AL. The lower 8 bit from AL and higher 8 bit from AH.  
 Besides, the whole register bits are covered by the both 8 bit register, so CoveredBySubRes is set to 1.
+
 ```
 // 16-bit registers
 let SubRegIndices = [sub_8bit, sub_8bit_hi], CoveredBySubRegs = 1 in {
@@ -43,6 +44,7 @@ def AX : X86Reg<"ax", 0, [AL,AH]>;
 
 EAX is extented from AX and the extented part is not from any existed registers.  
 From this and above one, It should be clear that how to set SubRegIndices and CoveredBySubRegs.
+
 ```
 // 32-bit registers
 let SubRegIndices = [sub_16bit] in {

@@ -15,4 +15,4 @@ Just notes for me to reference.
 > 
 > Then itemp2 can be computed at compile time and the  
 > addition need not be done during execution.  
-> [orginal page](https://sourceforge.net/p/sdcc/mailman/message/5474241/)
+> @[orginal page](https://sourceforge.net/p/sdcc/mailman/message/5474241/)

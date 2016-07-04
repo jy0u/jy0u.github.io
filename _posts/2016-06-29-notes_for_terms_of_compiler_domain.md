@@ -16,3 +16,9 @@ Just notes for me to reference.
 > Then itemp2 can be computed at compile time and the  
 > addition need not be done during execution.  
 > @[orginal page](https://sourceforge.net/p/sdcc/mailman/message/5474241/)
+
+* PHI instruction
+
+> an easier explanation,  
+> http://www.cnblogs.com/ilocker/p/4897325.html
+> http://www.cnblogs.com/ilocker/p/4892439.html

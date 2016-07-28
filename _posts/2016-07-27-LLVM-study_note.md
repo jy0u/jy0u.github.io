@@ -5,21 +5,6 @@ title: LLVM Study Notes
 
 Keep some useful information for LLVM study.
 
-* How TableGen's DAGISel Backend Works [link](https://github.com/draperlaboratory/fracture/wiki/How-TableGen's-DAGISel-Backend-Works)
-
-* A Beginner's Guide to Fracture [link](https://github.com/draperlaboratory/fracture/wiki/A-Beginner%27s-Guide-to-Fracture)
-
-* A deeper look into the LLVM code generator, Part 1 [link](http://eli.thegreenplace.net/2013/02/25/a-deeper-look-into-the-llvm-code-generator-part-1)
-
-* What are glue and chain dependencies in an LLVM DAG? [link](http://stackoverflow.com/questions/33005061/what-are-glue-and-chain-dependencies-in-an-llvm-dag)
-> Black arrows mean data flow dependency  
-> Red arrows mean glue dependency  
-> Blue dashed arrows mean chain dependency  
-> Chain dependencies prevent nodes with side effects (including memory operations and explicit register operations)   
-> from being scheduled out of order relative to each other.  
-> Glue prevents the two nodes from being broken up during scheduling.   
-> It's actually more subtle than that [1], but most of the time you don't need to worry about it.
-
 * Writing an LLVM Backend [link](http://llvm.org/docs/WritingAnLLVMBackend.html)
 
 * x86 Instruction Set Reference [link](http://x86.renejeschke.de/)
@@ -31,3 +16,39 @@ Keep some useful information for LLVM study.
 * Tutorial: Creating an LLVM Backend for the Cpu0 Architecture [link](http://jonathan2251.github.io/lbd/)
 
 * Tutorial: Creating an LLVM Toolchain for the Cpu0 Architecture [link](http://jonathan2251.github.io/lbt/)
+
+* How TableGen's DAGISel Backend Works [link](https://github.com/draperlaboratory/fracture/wiki/How-TableGen's-DAGISel-Backend-Works)
+
+* A deeper look into the LLVM code generator, Part 1 [link](http://eli.thegreenplace.net/2013/02/25/a-deeper-look-into-the-llvm-code-generator-part-1)
+
+* SelectionDAG [link](https://github.com/draperlaboratory/fracture/wiki/A-Beginner%27s-Guide-to-Fracture)
+> * Instruction nodes have a list of operands on the top, and result values on the bottom.   
+> The name of the instruction is in the middle.   
+> * CopyFromReg (CFR) nodes have two operands: the chain and a register. 
+>    They have two results: a value and the chain. They denote that the value of the given register is being copied and  
+>    placed into the result.
+> * CopyToReg (C2R) nodes have three operands: the chain, a register, and a value.  
+> They have one result: the chain. They denote that the value of the given register is being replaced  
+> with the value operand. Register nodes are only used by the CFR nodes and the C2R nodes.   
+> They indicate which register the operation is using. There is one register node for each individual   
+> register used in the SelectionDAG. If multiple CFRs and C2Rs use the same register, they will all point to the same node.  
+> * The EntryToken node is the first node in the graph and represents the start of the basic block.  
+> There is only one EntryToken per SelectionDAG.
+> * The GraphRoot node is the last node in the graph and represents the end of the basic block.  
+> There is only one GraphRoot per SelectrionDAG.
+> * The chain represents the flow of control.  
+> Starting from the EntryToken, the chain can be followed all the way down to the GraphRoot.   
+> This is the order in which the instructions must execute for the program to work correctly.  
+> The instructions that do not involve the chain can be executed in any order, as long as all of  
+> their operands have executed in the right order.
+
+* What are glue and chain dependencies in an LLVM DAG? [link](http://stackoverflow.com/questions/33005061/what-are-glue-and-chain-dependencies-in-an-llvm-dag)
+> Black arrows mean data flow dependency  
+> Red arrows mean glue dependency  
+> Blue dashed arrows mean chain dependency  
+> Chain dependencies prevent nodes with side effects (including memory operations and explicit register operations)   
+> from being scheduled out of order relative to each other.  
+> Glue prevents the two nodes from being broken up during scheduling.   
+> It's actually more subtle than that [1], but most of the time you don't need to worry about it.
+
+

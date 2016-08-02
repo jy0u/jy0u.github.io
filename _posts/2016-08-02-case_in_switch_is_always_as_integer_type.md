@@ -6,10 +6,11 @@ title: Case in Switch is always as Integer type
 It is well known that the case of switch statement should be a number or an expression to a number.  
 However, what type of number is also defined in C standard. It sould be integer type!!  
 It is straightforward before you deeply think it.  
-[C Standard](http://c0x.coding-guidelines.com/6.8.4.2.html)
-> 1748 The controlling expression of a switch statement shall have integer type.
-> 1750 The expression of each case label shall be an integer constant expression and no two of the case constant expressions in the same switch statement shall have the same value after conversion.  
-> 1755 The integer promotions are performed on the controlling expression.  
+[C Standard](http://c0x.coding-guidelines.com/6.8.4.2.html)  
+
+> 1748 The controlling expression of a switch statement shall have integer type.  
+> 1750 The expression of each case label shall be an integer constant expression and no two of the case constant expressions in the same switch statement shall have the same value after conversion.    
+> 1755 The integer promotions are performed on the controlling expression.    
 
 There is an example which showing some flaws such that the rule is not so good.
 The below are the example, the source code snippet and emmited llvm IRs from a modified CLANG for TLCS870.  

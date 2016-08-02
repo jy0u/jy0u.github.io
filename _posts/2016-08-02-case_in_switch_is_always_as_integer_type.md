@@ -53,7 +53,8 @@ int compute(OP_E op, int a, int b) {
 }
 ```
 
-IR emmited from CLANG with -fshort-enum:
+IR emmited from CLANG with -fshort-enum:  
+
 ```
 ; ModuleID = '101.c'                                                                                                                                                                 
 source_filename = "101.c"
@@ -80,9 +81,11 @@ entry:
     i16 4, label %sw.bb4
   ]
 ```
+
 The original purpose of option -fshor-enum is to optimize the size of enum to 8 bit.   
 However, the case of switch statement should be integer type, so the zext instruction is inserted for type promotion.  
 It seems be implemented in Sema::ActOnStartOfSwitchStmt() of clang/lib/Sema/SemaStmt.cpp .  
+
 ``` C
 // C99 6.8.4.2p5 - Integer promotions are performed on the controlling expr.
     CondResult = UsualUnaryConversions(Cond);

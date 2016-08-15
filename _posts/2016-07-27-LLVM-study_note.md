@@ -22,6 +22,7 @@ Keep some useful information for LLVM study.
 * A deeper look into the LLVM code generator, Part 1 [link](http://eli.thegreenplace.net/2013/02/25/a-deeper-look-into-the-llvm-code-generator-part-1)
 
 * SelectionDAG [link](https://github.com/draperlaboratory/fracture/wiki/A-Beginner%27s-Guide-to-Fracture)   
+
 > * Instruction nodes have a list of operands on the top, and result values on the bottom.   
 > The name of the instruction is in the middle.   
 > * CopyFromReg (CFR) nodes have two operands: the chain and a register. 
@@ -44,12 +45,12 @@ Keep some useful information for LLVM study.
 
 * What are glue and chain dependencies in an LLVM DAG? [link](http://stackoverflow.com/questions/33005061/what-are-glue-and-chain-dependencies-in-an-llvm-dag)  
 
-> Black arrows mean data flow dependency  
-> Red arrows mean glue dependency  
-> Blue dashed arrows mean chain dependency  
-> Chain dependencies prevent nodes with side effects (including memory operations and explicit register operations)   
+> * Black arrows mean data flow dependency  
+> * Red arrows mean glue dependency  
+> * Blue dashed arrows mean chain dependency  
+> * Chain dependencies prevent nodes with side effects (including memory operations and explicit register operations)   
 > from being scheduled out of order relative to each other.  
-> Glue prevents the two nodes from being broken up during scheduling.   
+> * Glue prevents the two nodes from being broken up during scheduling.   
 > It's actually more subtle than that [1], but most of the time you don't need to worry about it.
 
 * The meaning of SDNPHasChain [link](http://lists.llvm.org/pipermail/llvm-dev/2006-October/006905.html)  

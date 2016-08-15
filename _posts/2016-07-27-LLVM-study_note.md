@@ -21,7 +21,7 @@ Keep some useful information for LLVM study.
 
 * A deeper look into the LLVM code generator, Part 1 [link](http://eli.thegreenplace.net/2013/02/25/a-deeper-look-into-the-llvm-code-generator-part-1)
 
-* SelectionDAG [link](https://github.com/draperlaboratory/fracture/wiki/A-Beginner%27s-Guide-to-Fracture)
+* SelectionDAG [link](https://github.com/draperlaboratory/fracture/wiki/A-Beginner%27s-Guide-to-Fracture)   
 > * Instruction nodes have a list of operands on the top, and result values on the bottom.   
 > The name of the instruction is in the middle.   
 > * CopyFromReg (CFR) nodes have two operands: the chain and a register. 
@@ -42,7 +42,8 @@ Keep some useful information for LLVM study.
 > The instructions that do not involve the chain can be executed in any order, as long as all of  
 > their operands have executed in the right order.
 
-* What are glue and chain dependencies in an LLVM DAG? [link](http://stackoverflow.com/questions/33005061/what-are-glue-and-chain-dependencies-in-an-llvm-dag)
+* What are glue and chain dependencies in an LLVM DAG? [link](http://stackoverflow.com/questions/33005061/what-are-glue-and-chain-dependencies-in-an-llvm-dag)  
+
 > Black arrows mean data flow dependency  
 > Red arrows mean glue dependency  
 > Blue dashed arrows mean chain dependency  
@@ -51,4 +52,9 @@ Keep some useful information for LLVM study.
 > Glue prevents the two nodes from being broken up during scheduling.   
 > It's actually more subtle than that [1], but most of the time you don't need to worry about it.
 
+* The meaning of SDNPHasChain [link](http://lists.llvm.org/pipermail/llvm-dev/2006-October/006905.html)  
 
+> to model relative ordering of memory operations.   
+> SDNPHasChain is defined in TargetSelectionDAG.td as a node property.  
+> It tells tblegen that specific node read / write chains so tblgen can emit the correct    
+> selection code for patterns that use these SDNode's.  

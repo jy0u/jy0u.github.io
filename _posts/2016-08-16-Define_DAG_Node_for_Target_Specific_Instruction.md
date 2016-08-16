@@ -14,9 +14,11 @@ Most handling process in LLVM are based on DAG and try to manipulate the nodes s
 When we do the legalization or lowering, it is possible that some representation should be created for the target specific instruction.  
 As you know, a DAG node is represented by the a operation, certain number of operands and some relationship to other nodes.  
 Hence, the key point is to learn   
+
   * how to define a operation
   * how to define operands
-  * how to make relationships
+  * how to make relationships  
+
 Then, you can define your own DAG nodes.   
 
 First, it is about the operands.
@@ -59,6 +61,7 @@ It is called SDTypeProfile. Later, you will find that a type profile is necessar
 It is easy to understand the fields of SDTypeProfile by the codes, such as number of results, number of operands and the contraints of these operands. 
 There are lots of predefined SDTypeProfiles. Following is an example to be interpreted.   
 The constraints of operands in type profile, SDTIntBinOp,  
+
   * a typical profiles for operands of binary operation,
   * two operands and one result
   * both two operands have the same type and their type is integer.  

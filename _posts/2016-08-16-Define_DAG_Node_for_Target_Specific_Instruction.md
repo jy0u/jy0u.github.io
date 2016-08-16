@@ -13,7 +13,7 @@ The DAG represents IRs and semantic, relationships between the IR instrucitons.
 Most handling process in LLVM are based on DAG and try to manipulate the nodes such as insert, delete or replace.
 When we do the legalization or lowering, it is possible that some representation should be created for the target specific instruction.  
 As you know, a DAG node is represented by the a operation, certain number of operands and some relationship to other nodes.  
-Hence, the key point is to learn 
+Hence, the key point is to learn   
   * how to define a operation
   * how to define operands
   * how to make relationships
@@ -58,7 +58,7 @@ Then, the above constraints could be used to represent the operands of a kind of
 It is called SDTypeProfile. Later, you will find that a type profile is necessary to define each kind of DAG node.
 It is easy to understand the fields of SDTypeProfile by the codes, such as number of results, number of operands and the contraints of these operands. 
 There are lots of predefined SDTypeProfiles. Following is an example to be interpreted.   
-The constraints of operands in type profile, SDTIntBinOp, 
+The constraints of operands in type profile, SDTIntBinOp,  
   * a typical profiles for operands of binary operation,
   * two operands and one result
   * both two operands have the same type and their type is integer.  

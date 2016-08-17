@@ -157,3 +157,56 @@ def SDT_XCoreBR_JT : SDTypeProfile<0, 2, [SDTCisVT<0, i32>, SDTCisVT<1, i32>]>;
 def XCoreBR_JT : SDNode<"XCoreISD::BR_JT", SDT_XCoreBR_JT, [SDNPHasChain]>;
 def XCoreBR_JT32 : SDNode<"XCoreISD::BR_JT32", SDT_XCoreBR_JT, [SDNPHasChain]>;
 ```
+
+Note1 - Pattern Fragments:
+The meaning and usage are obviously shown in the comments.
+Roughly, it is similar to a macro in C, but more powerful.
+The interpretation of the code is as following:  
+  * ops : the operands of the pattern which you defined.
+          For example, you want to define a pattern, named Pat_A, which have 2 operands.  
+          So, it will be represented as "(ops node:$a, node:$b)."
+  * frag: the pattern which you want to be represented, such as "add node $a, node: $b."
+  * pred: a kind of constraint, which help you to match the pattern, frag, more precisely.
+  * xform: a transformation function, which help to do more complicated transformation.  
+
+```C++
+//===----------------------------------------------------------------------===//
+// Selection DAG Pattern Fragments.
+//
+// Pattern fragments are reusable chunks of dags that match specific things.
+// They can take arguments and have C++ predicates that control whether they 
+// match.  They are intended to make the patterns for common instructions more 
+// compact and readable.
+//
+
+/// PatFrag - Represents a pattern fragment.  This can match something on the
+/// DAG, from a single node to multiple nested other fragments.
+///
+class PatFrag<dag ops, dag frag, code pred = [{}],
+              SDNodeXForm xform = NOOP_SDNodeXForm> : SDPatternOperator {
+  dag Operands = ops; 
+  dag Fragment = frag;
+  code PredicateCode = pred;
+  code ImmediateCode = [{}];
+  SDNodeXForm OperandTransform = xform;                                                                                                                                              
+}
+```
+Below are examples. It could be a simple pattern fragment as "lda16f" 
+which just make it operate as shl the 2nd operand and then add them together. 
+It could be a little complicated as "store" which has nested pattern fragment and a constraints.  
+
+```C++
+// from XCore's implementation
+def lda16f : PatFrag<(ops node:$addr, node:$offset),                                                                                             (add node:$addr, (shl node:$offset, 1))>;
+
+// predefined pattern fragment in LLVM
+// store fragments.
+def unindexedstore : PatFrag<(ops node:$val, node:$ptr),
+                             (st node:$val, node:$ptr), [{
+  return cast<StoreSDNode>(N)->getAddressingMode() == ISD::UNINDEXED;
+}]>;
+def store : PatFrag<(ops node:$val, node:$ptr),
+                    (unindexedstore node:$val, node:$ptr), [{
+  return !cast<StoreSDNode>(N)->isTruncatingStore();
+}]>;
+```

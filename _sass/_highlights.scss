@@ -10,7 +10,14 @@
   overflow: scroll;
 }
 
-
+code {
+  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+  background-color: #eee;
+  padding: 1px 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;	
+}
 
 .highlight .c { color: #586E75 } /* Comment */
 .highlight .err { color: #93A1A1 } /* Error */

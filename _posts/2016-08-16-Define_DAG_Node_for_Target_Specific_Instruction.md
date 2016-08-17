@@ -162,14 +162,14 @@ def XCoreBR_JT32 : SDNode<"XCoreISD::BR_JT32", SDT_XCoreBR_JT, [SDNPHasChain]>;
 #### Note1 - Pattern Fragments:  
 
 The meaning and usage are obviously shown in the comments.
-Roughly, it is similar to a macro in C, but more powerful.
+Roughly, it is similar to a macro in C, but more powerful.  
 The interpretation of the code is as following:  
-  * ops : the operands of the pattern which you defined.
-          For example, you want to define a pattern, named Pat_A, which have 2 operands.  
-          So, it will be represented as "(ops node:$a, node:$b)."
-  * frag: the pattern which you want to be represented, such as "add node $a, node: $b."
-  * pred: a kind of constraint, which help you to match the pattern, frag, more precisely.
-  * xform: a transformation function, which help to do more complicated transformation.  
+  * ops : the operands of the pattern which you defined.  
+          For example, you want to define a pattern, named Pat_A, which have 2 operands.    
+          So, it will be represented as "(ops node:$a, node:$b)."  
+  * frag: the pattern which you want to be represented, such as "add node $a, node: $b."  
+  * pred: a kind of constraint, which help you to match the pattern, frag, more precisely.  
+  * xform: a transformation function, which help to do more complicated transformation.    
 
 ```C++
 //===----------------------------------------------------------------------===//

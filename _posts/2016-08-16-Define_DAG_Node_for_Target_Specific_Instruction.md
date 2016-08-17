@@ -157,13 +157,14 @@ def SDT_XCoreBR_JT : SDTypeProfile<0, 2, [SDTCisVT<0, i32>, SDTCisVT<1, i32>]>;
 def XCoreBR_JT : SDNode<"XCoreISD::BR_JT", SDT_XCoreBR_JT, [SDNPHasChain]>;
 def XCoreBR_JT32 : SDNode<"XCoreISD::BR_JT32", SDT_XCoreBR_JT, [SDNPHasChain]>;
 ```
-===
+======
 
 #### Note1 - Pattern Fragments:  
 
 The meaning and usage are obviously shown in the comments.
 Roughly, it is similar to a macro in C, but more powerful.  
 The interpretation of the code is as following:  
+
   * ops : the operands of the pattern which you defined.  
           For example, you want to define a pattern, named Pat_A, which have 2 operands.    
           So, it will be represented as "(ops node:$a, node:$b)."  

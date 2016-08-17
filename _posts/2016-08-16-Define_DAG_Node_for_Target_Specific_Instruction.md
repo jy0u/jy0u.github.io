@@ -157,7 +157,7 @@ def SDT_XCoreBR_JT : SDTypeProfile<0, 2, [SDTCisVT<0, i32>, SDTCisVT<1, i32>]>;
 def XCoreBR_JT : SDNode<"XCoreISD::BR_JT", SDT_XCoreBR_JT, [SDNPHasChain]>;
 def XCoreBR_JT32 : SDNode<"XCoreISD::BR_JT32", SDT_XCoreBR_JT, [SDNPHasChain]>;
 ```
-======
+-------------
 
 #### Note1 - Pattern Fragments:  
 

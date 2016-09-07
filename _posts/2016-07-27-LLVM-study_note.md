@@ -7,6 +7,15 @@ Keep some useful information for LLVM study.
 
 * Writing an LLVM Backend [link](http://llvm.org/docs/WritingAnLLVMBackend.html)
 
+* Cormack-BuildingAnLLVMBackend.pdf [link](http://llvm.org/devmtg/2014-10/Slides/Cormack-BuildingAnLLVMBackend.pdf)
+
+* LLVM programmer's manual [link](http://kito.wikidot.com/llvm-programmer-s-manual)
+
+* Howto: Implementing LLVM Integrated Assembler - A Simple Guide [link](http://www.embecosm.com/appnotes/ean10/ean10-howto-llvmas-1.0.html)
+
+* a back-end maintainer has to provide a few "guarantees" to 
+continue supporting in tree [link](https://groups.google.com/d/msg/llvm-dev/0D9KO7QiZuE/gSGIJAa9GckJ)
+
 * x86 Instruction Set Reference [link](http://x86.renejeschke.de/)
 
 * X86 Assembly/Machine Language Conversion [link](https://en.wikibooks.org/wiki/X86_Assembly/Machine_Language_Conversion)
@@ -20,6 +29,8 @@ Keep some useful information for LLVM study.
 * How TableGen's DAGISel Backend Works [link](https://github.com/draperlaboratory/fracture/wiki/How-TableGen's-DAGISel-Backend-Works)
 
 * A deeper look into the LLVM code generator, Part 1 [link](http://eli.thegreenplace.net/2013/02/25/a-deeper-look-into-the-llvm-code-generator-part-1)
+
+* ISD::NodeType [link](http://llvm.org/docs/doxygen/html/ISDOpcodes_8h_source.html) 
 
 * SelectionDAG [link](https://github.com/draperlaboratory/fracture/wiki/A-Beginner%27s-Guide-to-Fracture)   
 
@@ -59,3 +70,15 @@ Keep some useful information for LLVM study.
 > SDNPHasChain is defined in TargetSelectionDAG.td as a node property.  
 > It tells tblegen that specific node read / write chains so tblgen can emit the correct    
 > selection code for patterns that use these SDNode's.  
+
+* The meaning of MIOperandInfo [link](http://lists.llvm.org/pipermail/llvm-dev/2015-October/091860.html)  
+
+> an address can be formed from a 16-bit register plus a zero-extended 8-bit register.  
+> a ComplexPattern to match the address expression and MIOperandInfo to specify the classes of the registers  
+
+``` C++
+def memR16R8 : Operand<i16> {
+		let MIOperandInfo = (ops Reg16Class, Reg8Class);
+		...
+	}
+```

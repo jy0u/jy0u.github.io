@@ -71,7 +71,7 @@ continue supporting in tree [link](https://groups.google.com/d/msg/llvm-dev/0D9K
 > It tells tblegen that specific node read / write chains so tblgen can emit the correct    
 > selection code for patterns that use these SDNode's.  
 
-* The meaning of MIOperandInfo [link](http://lists.llvm.org/pipermail/llvm-dev/2015-October/091860.html)  
+* The meaning & example of MIOperandInfo [link](http://lists.llvm.org/pipermail/llvm-dev/2015-October/091860.html)  
 
 > an address can be formed from a 16-bit register plus a zero-extended 8-bit register.  
 > a ComplexPattern to match the address expression and MIOperandInfo to specify the classes of the registers  

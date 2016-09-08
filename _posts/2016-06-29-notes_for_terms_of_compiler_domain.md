@@ -16,6 +16,9 @@ Just notes for me to reference.
 > Then itemp2 can be computed at compile time and the  
 > addition need not be done during execution.  
 > @[orginal page](https://sourceforge.net/p/sdcc/mailman/message/5474241/)
+>  
+> Rematerialization is a strategy for register allocator to determine if it is cheaper to recompute the value than to use memory load/store.
+
 
 * PHI instruction
 

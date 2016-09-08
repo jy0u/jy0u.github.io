@@ -151,5 +151,5 @@ reference: [discussion of [LLVMdev] pseudo lowering in mail list](https://groups
 
 > LLVM’s register allocators assume that spills, fills, and copies can be safely inserted anywhere (except after terminator instructions). The register allocators simply can’t work without that assumption.
 > 
-> As far as I know, your only option is to make sure that CCR is never live anywhere. This means that you need to create pseudo-instructions that bundle cmp+jump so the register allocator will never attempt to insert spill code between them.
+> As far as I know, your only option is to make sure that CCR is never live anywhere. This means that you need to create pseudo-instructions that bundle cmp+jump so the register allocator will never attempt to insert spill code between them.  
 > ref: [[LLVMdev] Rematerialization and spilling](http://lists.llvm.org/pipermail/llvm-dev/2013-June/062630.html)
